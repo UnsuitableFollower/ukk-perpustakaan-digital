@@ -1,7 +1,7 @@
 # Manajemen Perpustakaan Digital Laravel
 
 ## Deskripsi Proyek
-Perpustakaan Digital adalah aplikasi berbasis web yang dibuat menggunakan Laravel dan Bootstrap. Aplikasi ini menyediakan fitur untuk mengelola data pustaka, pengarang, penerbit, dan kategori. Sistem ini mendukung multi-user dengan dua peran: admin dan pengguna biasa.
+Perpustakaan Digital adalah aplikasi berbasis web yang dibuat menggunakan Laravel dan Bootstrap. Aplikasi ini menyediakan fitur untuk mengelola data pustaka, pengarang, penerbit, dan kategori.
 
 ---
 
