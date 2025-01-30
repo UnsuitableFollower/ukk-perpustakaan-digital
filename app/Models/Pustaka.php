@@ -11,6 +11,7 @@ class Pustaka extends Model
 
     // Nama tabel
     protected $table = 'tbl_pustaka';
+    protected $primaryKey = 'id_pustaka';
 
     // Kolom yang dapat diisi
     protected $fillable = [

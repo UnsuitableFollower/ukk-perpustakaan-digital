@@ -18,6 +18,8 @@ class PustakaController extends Controller
      */
     public function index()
     {
+        
+
         $pustakas = Pustaka::all();
         $ddcs = DDC::all();
         $formats = Format::all();

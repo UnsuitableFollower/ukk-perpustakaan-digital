@@ -29,51 +29,57 @@
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('dashboard') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/dashboard') }}">
+                    <a class="nav-link text-white {{ request()->is('dashboard') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/dashboard') }}">
                         <i class="bi bi-house-door me-2"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('pustaka') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/pustaka') }}">
+                    <a class="nav-link text-white {{ request()->is('pustaka') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/pustaka') }}">
                         <i class="bi bi-book-fill me-2"></i> Pustaka
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('anggota') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/anggota') }}">
+                    <a class="nav-link text-white {{ request()->is('anggota') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/anggota') }}">
                         <i class="bi bi-person-fill me-2"></i> Data Anggota
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('rak') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/rak') }}">
-                        <i class="bi bi-bookshelf me-2"></i> Rak
+                    <a class="nav-link text-white {{ request()->is('rak') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/rak') }}">
+                        <i class="bi bi-grid-3x3-gap me-2"></i> Rak
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('ddc') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/ddc') }}">
-                        <i class="bi bi-bookmark-fill me-2"></i> DDC
+                    <a class="nav-link text-white {{ request()->is('ddc') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/ddc') }}">
+                        <i class="bi bi-bookmarks-fill me-2"></i> DDC
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('penerbit') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/penerbit') }}">
+                    <a class="nav-link text-white {{ request()->is('penerbit') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/penerbit') }}">
                         <i class="bi bi-printer me-2"></i> Penerbit
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('pengarang') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/pengarang') }}">
-                        <i class="bi bi-pen me-2"></i> Pengarang
+                    <a class="nav-link text-white {{ request()->is('pengarang') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/pengarang') }}">
+                        <i class="bi bi-person-lines-fill me-2"></i> Pengarang
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a class="nav-link text-white {{ request()->is('format') ? 'active bg-secondary' : '' }}" 
-                       href="{{ url('/format') }}">
-                        <i class="bi-file-earmark me-2"></i> Format
+                    <a class="nav-link text-white {{ request()->is('format') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/format') }}">
+                        <i class="bi bi-book me-2"></i> Format
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white {{ request()->is('transaksi') ? 'active bg-secondary' : '' }}"
+                        href="{{ url('/transaksi') }}">
+                        <i class="bi bi-list-check me-2"></i> Transaksi
                     </a>
                 </li>
                 @guest
@@ -95,13 +101,13 @@
                     <li class="nav-item">
                         <div class="dropdown">
                             <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
+                                aria-expanded="false">
                                 <i class="bi bi-person-circle me-2"></i>{{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" 
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="bi bi-box-arrow-left me-2"></i> {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

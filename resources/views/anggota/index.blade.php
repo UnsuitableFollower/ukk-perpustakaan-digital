@@ -4,7 +4,7 @@
 <div class="container">
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-primary">Daftar Anggota</h1>
+        <h1 class="bi bi-person-fill"> Daftar Anggota</h1>
         <a href="{{ route('anggota.create') }}" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Tambah Anggota
         </a>

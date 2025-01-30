@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4">Daftar Pustaka</h1>
+    <h1 class="my-4 ">Daftar Pustaka</h1>
 
     <!-- Pesan Sukses -->
     @if(session('success'))

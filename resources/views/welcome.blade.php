@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan Digital</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         .hero-section {
             background: linear-gradient(to right, #4CAF50, #2E7D32);
@@ -29,6 +30,11 @@
             margin: 10px;
             padding: 10px 25px;
         }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #4CAF50;
+        }
     </style>
 </head>
 
@@ -43,11 +49,11 @@
     <!-- Hero Section -->
     <div class="hero-section">
         <div class="container">
-            <h1>Selamat Datang di Perpustakaan Digital</h1>
+            <h1><i class="bi bi-book-half"></i> Selamat Datang di Perpustakaan Digital</h1>
             <p>Manajemen Buku, Anggota, dan Transaksi dengan Mudah dan Cepat</p>
             <div>
-                <a href="/login" class="btn btn-light btn-login">Login</a>
-                <a href="/register" class="btn btn-outline-light btn-register">Daftar</a>
+                <a href="/login" class="btn btn-light btn-login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                <a href="/register" class="btn btn-outline-light btn-register"><i class="bi bi-person-plus"></i> Daftar</a>
             </div>
         </div>
     </div>
@@ -55,11 +61,12 @@
     <!-- Features Section -->
     <div class="feature-section">
         <div class="container text-center">
-            <h2>Fitur Unggulan</h2>
+            <h2><i class="bi bi-star-fill"></i> Fitur Unggulan</h2>
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
+                            <i class="bi bi-bookmark-fill feature-icon"></i>
                             <h5 class="card-title">Manajemen Buku</h5>
                             <p class="card-text">Kelola koleksi buku Anda secara terorganisir dengan fitur pencatatan lengkap.</p>
                         </div>
@@ -68,6 +75,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
+                            <i class="bi bi-person-circle feature-icon"></i>
                             <h5 class="card-title">Manajemen Anggota</h5>
                             <p class="card-text">Daftarkan anggota dan pantau aktivitas peminjaman mereka dengan mudah.</p>
                         </div>
@@ -76,6 +84,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
+                            <i class="bi bi-arrow-repeat feature-icon"></i>
                             <h5 class="card-title">Transaksi Cepat</h5>
                             <p class="card-text">Lakukan peminjaman dan pengembalian buku dengan cepat dan efisien.</p>
                         </div>

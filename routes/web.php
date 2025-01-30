@@ -11,6 +11,7 @@ use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\PustakaController;
 use App\Http\Controllers\FormatController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/pustaka/{pustaka}', [PustakaController::class, 'destroy'])->name('pustaka.destroy');
     Route::put('/pustaka/{id}', [PustakaController::class, 'update'])->name('pustaka.update');
     Route::resource('format', FormatController::class); 
+    Route::resource('transaksi', TransaksiController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -10,6 +10,8 @@ class Penerbit extends Model
     use HasFactory;
 
     protected $table = 'tbl_penerbit';
+    protected $primaryKey = 'id_penerbit'; 
+    public $timestamps = false;
 
     protected $fillable = [
         'kode_penerbit',

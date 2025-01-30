@@ -11,7 +11,8 @@
                     <h4><i class="bi bi-speedometer2 me-2"></i>{{ __('Dashboard') }}</h4>
                 </div>
                 <div class="card-body text-center">
-                    <h5>{{ __('Selamat datang, ') }} <span class="text-primary fw-bold">{{ Auth::user()->name }}</span>!</h5>
+                    <h5>{{ __('Selamat datang, ') }} <span class="text-primary fw-bold">{{ Auth::user()->name }}</span>!
+                    </h5>
                     <p class="mt-2 text-muted">Kelola data perpustakaan dengan mudah dan cepat.</p>
                 </div>
             </div>

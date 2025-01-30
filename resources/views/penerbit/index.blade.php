@@ -2,18 +2,20 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4">Daftar Penerbit</h1>
+    <h1 class="my-4 bi bi-printer"> Daftar Penerbit</h1>
+
+    <!-- Search and Add Penerbit Button -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <form method="GET" action="{{ route('penerbit.index') }}" class="d-flex w-50">
-            <input type="text" name="search" class="form-control me-2" placeholder="Cari penerbit..."
-                value="{{ request('search') }}">
-            <button class="btn btn-primary" type="submit">Cari</button>
+            <input type="text" name="search" class="form-control me-2" placeholder="Cari penerbit..." value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Cari</button>
         </form>
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
             <i class="bi bi-plus-circle"></i> Tambah Penerbit
         </button>
     </div>
 
+    <!-- Penerbit Table -->
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
@@ -38,20 +40,16 @@
                             <strong>Email:</strong> {{ $penerbit->email }}
                         </td>
                         <td>
-                            <button class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#detailModal{{ $penerbit->id_penerbit }}">
+                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $penerbit->id_penerbit }}">
                                 <i class="bi bi-eye"></i> Detail
                             </button>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#editModal{{ $penerbit->id_penerbit }}">
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $penerbit->id_penerbit }}">
                                 <i class="bi bi-pencil"></i> Edit
                             </button>
-                            <form action="{{ route('penerbit.destroy', $penerbit->id_penerbit) }}" method="POST"
-                                style="display: inline;">
+                            <form action="{{ route('penerbit.destroy', $penerbit->id_penerbit) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus penerbit ini?')">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus penerbit ini?')">
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
                             </form>
@@ -59,14 +57,12 @@
                     </tr>
 
                     <!-- Modal Detail -->
-                    <div class="modal fade" id="detailModal{{ $penerbit->id_penerbit }}" tabindex="-1"
-                        aria-labelledby="detailModalLabel{{ $penerbit->id_penerbit }}" aria-hidden="true">
+                    <div class="modal fade" id="detailModal{{ $penerbit->id_penerbit }}" tabindex="-1" aria-labelledby="detailModalLabel{{ $penerbit->id_penerbit }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="detailModalLabel{{ $penerbit->id_penerbit }}">Detail Penerbit</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <p><strong>Kode Penerbit:</strong> {{ $penerbit->kode_penerbit }}</p>
@@ -81,6 +77,62 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Edit -->
+                    <div class="modal fade" id="editModal{{ $penerbit->id_penerbit }}" tabindex="-1" aria-labelledby="editModalLabel{{ $penerbit->id_penerbit }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel{{ $penerbit->id_penerbit }}">Edit Penerbit</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{{ route('penerbit.update', $penerbit->id_penerbit) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="kode_penerbit" class="form-label">Kode Penerbit</label>
+                                                <input type="text" class="form-control" id="kode_penerbit" name="kode_penerbit" value="{{ $penerbit->kode_penerbit }}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="nama_penerbit" class="form-label">Nama Penerbit</label>
+                                                <input type="text" class="form-control" id="nama_penerbit" name="nama_penerbit" value="{{ $penerbit->nama_penerbit }}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="alamat_penerbit" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control" id="alamat_penerbit" name="alamat_penerbit" value="{{ $penerbit->alamat_penerbit }}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="no_telp" class="form-label">No. Telepon</label>
+                                                <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $penerbit->no_telp }}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" name="email" value="{{ $penerbit->email }}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="fax" class="form-label">Fax</label>
+                                                <input type="text" class="form-control" id="fax" name="fax" value="{{ $penerbit->fax }}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="website" class="form-label">Website</label>
+                                                <input type="url" class="form-control" id="website" name="website" value="{{ $penerbit->website }}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="kontak" class="form-label">Kontak</label>
+                                                <input type="text" class="form-control" id="kontak" name="kontak" value="{{ $penerbit->kontak }}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -102,35 +154,35 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="kode_penerbit" class="form-label">Kode Penerbit</label>
                             <input type="text" class="form-control" id="kode_penerbit" name="kode_penerbit" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="nama_penerbit" class="form-label">Nama Penerbit</label>
                             <input type="text" class="form-control" id="nama_penerbit" name="nama_penerbit" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="alamat_penerbit" class="form-label">Alamat</label>
                             <input type="text" class="form-control" id="alamat_penerbit" name="alamat_penerbit" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="no_telp" class="form-label">No. Telepon</label>
                             <input type="text" class="form-control" id="no_telp" name="no_telp" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="fax" class="form-label">Fax</label>
                             <input type="text" class="form-control" id="fax" name="fax">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="website" class="form-label">Website</label>
                             <input type="url" class="form-control" id="website" name="website">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="kontak" class="form-label">Kontak</label>
                             <input type="text" class="form-control" id="kontak" name="kontak" required>
                         </div>
@@ -144,5 +196,4 @@
         </div>
     </div>
 </div>
-
 @endsection
