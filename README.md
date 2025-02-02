@@ -12,6 +12,7 @@ Perpustakaan Digital adalah aplikasi berbasis web yang dibuat menggunakan Larave
 4. **Pengelolaan Rak dan DDC:** Kelola rak buku dan klasifikasi DDC.
 5. **Pencarian dan Filter:** Cari data berdasarkan kriteria tertentu.
 6. **Upload Gambar:** Upload gambar pustaka dengan penyimpanan di storage Laravel.
+7. **Transaksi:** Menambahkan Transaksi Dan Pengembalian
 
 ---
 
