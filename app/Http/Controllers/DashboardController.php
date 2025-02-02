@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $totalTransaksi = Transaksi::count();
         $totalAnggota = Anggota::count();
         $totalBuku = Pustaka::count();
-        $peminjamanAktif = Transaksi::count();
+        $peminjamanAktif = Transaksi::whereNull('tgl_pengembalian')->count();
 
         return view('dashboard', compact('totalAnggota', 'totalBuku', 'totalTransaksi', 'peminjamanAktif'));
 
