@@ -48,17 +48,17 @@
         </div>
 
         <!-- Peminjaman Aktif -->
-        <div class="col-md-4 mb-4">
-            <div class="card text-white bg-warning shadow-lg border-0 h-100">
-                <div class="card-header text-center fw-bold">
-                    <i class="bi bi-check-lg me-2"></i>Peminjaman Aktif
-                </div>
-                <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-                    <h1 class="display-4 fw-bold mb-0">{{ $peminjamanAktif ?? 0 }}</h1>
-                    <p class="card-text mt-2">Peminjaman buku yang sedang berlangsung.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card text-white bg-warning shadow-lg border-0 h-100">
+                    <div class="card-header text-center fw-bold">
+                        <i class="bi bi-check-lg me-2"></i>Peminjaman Aktif
+                    </div>
+                    <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                        <h1 class="display-4 fw-bold mb-0">{{ $peminjamanAktif ?? 0 }}</h1>
+                        <p class="card-text mt-2">Peminjaman buku yang sedang berlangsung.</p>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 @endsection

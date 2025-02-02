@@ -10,7 +10,7 @@
     </button>
 
     <!-- Tabel Transaksi -->
-    <div class="table-responsive">
+    <class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
                 <tr>
@@ -24,13 +24,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($transaksi as $t)
+                @foreach($transaksi->whereNull('tgl_pengembalian') as $t)
                     <tr>
                         <td>{{ $t->id_transaksi }}</td>
                         <td>{{ $t->pustaka->judul_pustaka }}</td>
                         <td>{{ $t->anggota->nama_anggota }}</td>
                         <td>{{ $t->tgl_pinjam }}</td>
-                        <td>{{ $t->tgl_kembali }}</td>
+                        <td>{{ $t->tgl_kembali ?? '-' }}</td>
                         <td>{{ $t->keterangan }}</td>
                         <td>
                             <!-- Tombol Edit -->
@@ -57,7 +57,32 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+</div>
+
+<div class="table-responsive mt-4">
+    <h4>📌 Daftar Pengembalian</h4>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID Transaksi</th>
+                <th>Judul Pustaka</th>
+                <th>Nama Anggota</th>
+                <th>Tanggal Pengembalian</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($transaksi->whereNotNull('tgl_pengembalian') as $t)
+                <tr>
+                    <td>{{ $t->id_transaksi }}</td>
+                    <td>{{ $t->pustaka->judul_pustaka }}</td>
+                    <td>{{ $t->anggota->nama_anggota }}</td>
+                    <td>{{ $t->tgl_pengembalian }}</td>
+                    <td>{{ $t->keterangan }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
 <!-- Modal Create -->
@@ -125,7 +150,7 @@
                         <label for="edit_id_pustaka" class="form-label">Pustaka</label>
                         <select name="id_pustaka" id="edit_id_pustaka" class="form-select" required>
                             @foreach($pustaka as $p)
-                            <option value="{{ $p->id_pustaka }}">{{ $p->judul_pustaka }}</option>
+                                <option value="{{ $p->id_pustaka }}">{{ $p->judul_pustaka }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -133,7 +158,7 @@
                         <label for="edit_id_anggota" class="form-label">Anggota</label>
                         <select name="id_anggota" id="edit_id_anggota" class="form-select" required>
                             @foreach($anggota as $a)
-                            <option value="{{ $a->id_anggota }}">{{ $a->nama_anggota }}</option>
+                                <option value="{{ $a->id_anggota }}">{{ $a->nama_anggota }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -149,6 +174,10 @@
                         <label for="edit_keterangan" class="form-label">Keterangan</label>
                         <input type="text" name="keterangan" id="edit_keterangan" class="form-control">
                     </div>
+                    <div class="mb-3">
+                        <label for="edit_rgl_pengembalian" class="form-label">Tanggal Pengembalian</label>
+                        <input type="date" name="tgl_pengembalian" id="edit_tgl_pengembalian" class="form-control">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -161,10 +190,10 @@
 
 <!-- Script untuk Edit Modal -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Tangkap event klik tombol edit
         document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Ambil data dari atribut data-*
                 const id = this.getAttribute('data-id');
                 const pustakaId = this.getAttribute('data-pustaka');
@@ -186,5 +215,21 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Menangani tombol pengembalian
+        document.querySelectorAll(".return-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const idTransaksi = this.getAttribute("data-id");
+
+                // Menaruh ID transaksi ke dalam input hidden di form
+                document.getElementById("return-id").value = idTransaksi;
+            });
+        });
+    });
+</script>
+
+
 
 @endsection

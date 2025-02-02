@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/pustaka', [PustakaController::class, 'store'])->name('pustaka.store');
     Route::delete('/pustaka/{pustaka}', [PustakaController::class, 'destroy'])->name('pustaka.destroy');
     Route::put('/pustaka/{id}', [PustakaController::class, 'update'])->name('pustaka.update');
-    Route::resource('format', FormatController::class); 
+    Route::resource('format', FormatController::class);
     Route::resource('transaksi', TransaksiController::class);
 });
 

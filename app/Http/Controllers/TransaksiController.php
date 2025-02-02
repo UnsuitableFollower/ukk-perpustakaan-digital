@@ -30,19 +30,19 @@ class TransaksiController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'id_pustaka' => 'required|exists:tbl_pustaka,id_pustaka', 
-        'id_anggota' => 'required|exists:tbl_anggota,id_anggota', 
-        'tgl_pinjam' => 'required|date',
-        'tgl_kembali' => 'required|date',
-        'keterangan' => 'nullable|string|max:50',
-    ]);
+    {
+        $request->validate([
+            'id_pustaka' => 'required|exists:tbl_pustaka,id_pustaka',
+            'id_anggota' => 'required|exists:tbl_anggota,id_anggota',
+            'tgl_pinjam' => 'required|date',
+            'tgl_kembali' => 'required|date',
+            'keterangan' => 'nullable|string|max:50',
+        ]);
 
-    Transaksi::create($request->all());
+        Transaksi::create($request->all());
 
-    return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan!');
-}
+        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan!');
+    }
 
     public function edit($id)
     {
@@ -59,16 +59,31 @@ class TransaksiController extends Controller
             'id_anggota' => 'required|exists:tbl_anggota,id_anggota', // Sesuaikan dengan tabel dan kolom yang benar
             'tgl_pinjam' => 'required|date',
             'tgl_kembali' => 'required|date',
+            'tgl_pengembalian' => 'required|date',
             'keterangan' => 'nullable|string|max:50',
         ]);
-    
+
         // Cari transaksi berdasarkan ID
         $transaksi = Transaksi::findOrFail($id);
-    
+
         // Update data transaksi
         $transaksi->update($request->all());
-    
+
         return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil diperbarui!');
+    }
+
+    public function return(Request $request, $id)
+    {
+        $request->validate([
+            'tgl_pengembalian' => 'required|date',
+        ]);
+
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->update([
+            'tgl_pengembalian' => $request->tgl_pengembalian,
+        ]);
+
+        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dikembalikan!');
     }
 
     public function destroy($id)
