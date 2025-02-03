@@ -7,17 +7,18 @@ Perpustakaan Digital adalah aplikasi berbasis web yang dibuat menggunakan Larave
 
 ## Fitur Utama
 1. **Pengelolaan Pustaka:** Tambah, edit, hapus, dan lihat data pustaka.
-2. **Pengelolaan Pengarang:** Tambah, edit, dan hapus pengarang.
-3. **Pengelolaan Penerbit:** Tambah, edit, dan hapus penerbit.
-4. **Pengelolaan Rak dan DDC:** Kelola rak buku dan klasifikasi DDC.
-5. **Pencarian dan Filter:** Cari data berdasarkan kriteria tertentu.
-6. **Upload Gambar:** Upload gambar pustaka dengan penyimpanan di storage Laravel.
-7. **Transaksi:** Menambahkan Transaksi Dan Pengembalian
+2. **Pengelolaan Anggota:** Tambah, edit, hapus, Menambahkan Jenis Anggota dan liat data anggota
+3. **Pengelolaan Pengarang:** Tambah, edit, dan hapus pengarang.
+4. **Pengelolaan Penerbit:** Tambah, edit, dan hapus penerbit.
+5. **Pengelolaan Rak dan DDC:** Kelola rak buku dan klasifikasi DDC.
+6. **Pencarian dan Filter:** Cari data berdasarkan kriteria tertentu.
+7. **Upload Gambar:** Upload gambar pustaka dengan penyimpanan di storage Laravel.
+8. **Transaksi:** Menambahkan Transaksi Dan Pengembalian
 
 ---
 
 ## Persyaratan Sistem
-1. PHP >= 8.2
+1. PHP 8.2+
 2. Composer
 3. Laravel >= 11
 4. MySQL/MariaDB
@@ -63,12 +64,17 @@ cd perpustakaan-digital
 php artisan key:generate
 ```
 
-### 5. Migrasi dan Seed Database
+### 5. Linking Storage
+```bash
+php artisan storage:link
+```
+
+### 6. Migrasi dan Seed Database
 ```bash
 php artisan migrate --seed
 ```
 
-### 6. Jalankan Server Lokal
+### 7. Jalankan Server Lokal
 ```bash
 php artisan serve
 ```
